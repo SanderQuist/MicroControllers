@@ -1,5 +1,5 @@
 /*
- * Opdracht 1.c
+ * Opdracht 2.c
  *
  * Created: 30-1-2019 10:35:53
  * Author : Sander
@@ -18,17 +18,18 @@ void wait( int ms )
 
 int main( void )
 {
-	
-	DDRD = 0b11111111;			// All pins PORTD are set to output
-	
-	while (1)
+	DDRD |= (1<<PD7); //Makes first pin of PORTC as Output
+	// OR DDRC = 0x01;
+	DDRC &= ~(1<<PC0);//Makes firs pin of PORTD as Input
+	// OR DDRD = 0x00; //Makes all pins of PORTD input
+	while(1) //infinite loop
 	{
-		PORTD = 0x80;			// Write 10101010b PORTD
-		wait(500);
-		PORTD = 0x40;			// Write 01010101b PORTD
-		wait(500);
+		if(PINC & (1<<PC0) == 1) //If switch is pressed
+		{
+			PORTD |= (1<<PD7); //Turns ON LED
+			_delay_ms(3000); //3 second delay
+			PORTD &= ~(1<<PD7); //Turns OFF LED
+		}
 	}
-
-	return 1;
 }
 
