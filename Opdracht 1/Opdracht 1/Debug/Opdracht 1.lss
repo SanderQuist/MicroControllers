@@ -3,29 +3,29 @@ Opdracht 1.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00800100  00000132  2**0
+  0 .data         00000000  00800100  00800100  0000016e  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         000000de  00000000  00000000  00000054  2**1
+  1 .text         0000011a  00000000  00000000  00000054  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .comment      00000030  00000000  00000000  00000132  2**0
+  2 .comment      00000030  00000000  00000000  0000016e  2**0
                   CONTENTS, READONLY
-  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000164  2**2
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000001a0  2**2
                   CONTENTS, READONLY
-  4 .debug_aranges 00000028  00000000  00000000  000001a0  2**0
+  4 .debug_aranges 00000028  00000000  00000000  000001dc  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   000008fc  00000000  00000000  000001c8  2**0
+  5 .debug_info   00000998  00000000  00000000  00000204  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 00000830  00000000  00000000  00000ac4  2**0
+  6 .debug_abbrev 00000830  00000000  00000000  00000b9c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   000002cc  00000000  00000000  000012f4  2**0
+  7 .debug_line   00000388  00000000  00000000  000013cc  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000034  00000000  00000000  000015c0  2**2
+  8 .debug_frame  00000034  00000000  00000000  00001754  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    00000440  00000000  00000000  000015f4  2**0
+  9 .debug_str    00000440  00000000  00000000  00001788  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    0000006a  00000000  00000000  00001a34  2**0
+ 10 .debug_loc    0000006a  00000000  00000000  00001bc8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000018  00000000  00000000  00001a9e  2**0
+ 11 .debug_ranges 00000018  00000000  00000000  00001c32  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -110,7 +110,7 @@ Disassembly of section .text:
   94:	de bf       	out	0x3e, r29	; 62
   96:	cd bf       	out	0x3d, r28	; 61
   98:	13 d0       	rcall	.+38     	; 0xc0 <main>
-  9a:	1f c0       	rjmp	.+62     	; 0xda <_exit>
+  9a:	3d c0       	rjmp	.+122    	; 0x116 <_exit>
 
 0000009c <__bad_interrupt>:
   9c:	b1 cf       	rjmp	.-158    	; 0x0 <__vectors>
@@ -147,43 +147,83 @@ void wait( int ms )
   be:	08 95       	ret
 
 000000c0 <main>:
+	}
 }
 
 int main( void )
 {
-	
-	DDRD = 0b11111111;			// All pins PORTD are set to output
+	DDRD = 0b11111111;
   c0:	8f ef       	ldi	r24, 0xFF	; 255
   c2:	81 bb       	out	0x11, r24	; 17
-	
-	while (1)
-	{
-		PORTD = 0x80;			// Write 10101010b PORTD
-  c4:	d0 e8       	ldi	r29, 0x80	; 128
-		wait(500);
-		PORTD = 0x40;			// Write 01010101b PORTD
-  c6:	c0 e4       	ldi	r28, 0x40	; 64
-	
-	DDRD = 0b11111111;			// All pins PORTD are set to output
-	
-	while (1)
-	{
-		PORTD = 0x80;			// Write 10101010b PORTD
-  c8:	d2 bb       	out	0x12, r29	; 18
-		wait(500);
-  ca:	84 ef       	ldi	r24, 0xF4	; 244
-  cc:	91 e0       	ldi	r25, 0x01	; 1
-  ce:	e7 df       	rcall	.-50     	; 0x9e <wait>
-		PORTD = 0x40;			// Write 01010101b PORTD
-  d0:	c2 bb       	out	0x12, r28	; 18
-		wait(500);
-  d2:	84 ef       	ldi	r24, 0xF4	; 244
-  d4:	91 e0       	ldi	r25, 0x01	; 1
-  d6:	e3 df       	rcall	.-58     	; 0x9e <wait>
-  d8:	f7 cf       	rjmp	.-18     	; 0xc8 <main+0x8>
+	while(1){
+		PORTD |= (1<<PD0);
+  c4:	90 9a       	sbi	0x12, 0	; 18
+		wait(1000);
+  c6:	88 ee       	ldi	r24, 0xE8	; 232
+  c8:	93 e0       	ldi	r25, 0x03	; 3
+  ca:	e9 df       	rcall	.-46     	; 0x9e <wait>
+		PORTD &= ~(1<<PD0);
+  cc:	90 98       	cbi	0x12, 0	; 18
+		PORTD |= (1<<PD1);
+  ce:	91 9a       	sbi	0x12, 1	; 18
+		wait(1000);
+  d0:	88 ee       	ldi	r24, 0xE8	; 232
+  d2:	93 e0       	ldi	r25, 0x03	; 3
+  d4:	e4 df       	rcall	.-56     	; 0x9e <wait>
+		PORTD &= ~(1<<PD1);
+  d6:	91 98       	cbi	0x12, 1	; 18
+		PORTD |= (1<<PD2);
+  d8:	92 9a       	sbi	0x12, 2	; 18
+		wait(1000);
+  da:	88 ee       	ldi	r24, 0xE8	; 232
+  dc:	93 e0       	ldi	r25, 0x03	; 3
+  de:	df df       	rcall	.-66     	; 0x9e <wait>
+		PORTD &= ~(1<<PD2);
+  e0:	92 98       	cbi	0x12, 2	; 18
+		PORTD |= (1<<PD3);
+		wait(1000);
+  e2:	93 9a       	sbi	0x12, 3	; 18
+  e4:	88 ee       	ldi	r24, 0xE8	; 232
+  e6:	93 e0       	ldi	r25, 0x03	; 3
+  e8:	da df       	rcall	.-76     	; 0x9e <wait>
+		PORTD &= ~(1<<PD3);
+		PORTD |= (1<<PD4);
+  ea:	93 98       	cbi	0x12, 3	; 18
+		wait(1000);
+  ec:	94 9a       	sbi	0x12, 4	; 18
+  ee:	88 ee       	ldi	r24, 0xE8	; 232
+  f0:	93 e0       	ldi	r25, 0x03	; 3
+		PORTD &= ~(1<<PD4);
+  f2:	d5 df       	rcall	.-86     	; 0x9e <wait>
+		PORTD |= (1<<PD5);
+  f4:	94 98       	cbi	0x12, 4	; 18
+		wait(1000);
+  f6:	95 9a       	sbi	0x12, 5	; 18
+  f8:	88 ee       	ldi	r24, 0xE8	; 232
+  fa:	93 e0       	ldi	r25, 0x03	; 3
+		PORTD &= ~(1<<PD5);
+  fc:	d0 df       	rcall	.-96     	; 0x9e <wait>
+		PORTD |= (1<<PD6);
+  fe:	95 98       	cbi	0x12, 5	; 18
+		wait(1000);
+ 100:	96 9a       	sbi	0x12, 6	; 18
+ 102:	88 ee       	ldi	r24, 0xE8	; 232
+ 104:	93 e0       	ldi	r25, 0x03	; 3
+		PORTD &= ~(1<<PD6);
+ 106:	cb df       	rcall	.-106    	; 0x9e <wait>
+		PORTD |= (1<<PD7);
+ 108:	96 98       	cbi	0x12, 6	; 18
+		wait(1000);
+ 10a:	97 9a       	sbi	0x12, 7	; 18
+ 10c:	88 ee       	ldi	r24, 0xE8	; 232
+ 10e:	93 e0       	ldi	r25, 0x03	; 3
+ 110:	c6 df       	rcall	.-116    	; 0x9e <wait>
+		PORTD &= ~(1<<PD7);
+ 112:	97 98       	cbi	0x12, 7	; 18
+ 114:	d7 cf       	rjmp	.-82     	; 0xc4 <main+0x4>
 
-000000da <_exit>:
-  da:	f8 94       	cli
+00000116 <_exit>:
+ 116:	f8 94       	cli
 
-000000dc <__stop_program>:
-  dc:	ff cf       	rjmp	.-2      	; 0xdc <__stop_program>
+00000118 <__stop_program>:
+ 118:	ff cf       	rjmp	.-2      	; 0x118 <__stop_program>

@@ -1,5 +1,5 @@
 /*
- * Opdracht 1.c
+ * Opdracht 2.c
  *
  * Created: 30-1-2019 10:35:53
  * Author : Sander
@@ -18,17 +18,33 @@ void wait( int ms )
 
 int main( void )
 {
-	
-	DDRD = 0b11111111;			// All pins PORTD are set to output
-	
-	while (1)
-	{
-		PORTD = 0x80;			// Write 10101010b PORTD
-		wait(500);
-		PORTD = 0x40;			// Write 01010101b PORTD
-		wait(500);
+	DDRD = 0b11111111;
+	while(1){
+		PORTD |= (1<<PD0);
+		wait(1000);
+		PORTD &= ~(1<<PD0);
+		PORTD |= (1<<PD1);
+		wait(1000);
+		PORTD &= ~(1<<PD1);
+		PORTD |= (1<<PD2);
+		wait(1000);
+		PORTD &= ~(1<<PD2);
+		PORTD |= (1<<PD3);
+		wait(1000);
+		PORTD &= ~(1<<PD3);
+		PORTD |= (1<<PD4);
+		wait(1000);
+		PORTD &= ~(1<<PD4);
+		PORTD |= (1<<PD5);
+		wait(1000);
+		PORTD &= ~(1<<PD5);
+		PORTD |= (1<<PD6);
+		wait(1000);
+		PORTD &= ~(1<<PD6);
+		PORTD |= (1<<PD7);
+		wait(1000);
+		PORTD &= ~(1<<PD7);
 	}
-
-	return 1;
+	
 }
 
