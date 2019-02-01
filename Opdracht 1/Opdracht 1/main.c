@@ -19,31 +19,20 @@ void wait( int ms )
 int main( void )
 {
 	DDRD = 0b11111111;
+	char lampjes[10] = {1<<PD0,1<<PD1,1<<PD2,1<<PD3,1<<PD4,1<<PD5,1<<PD4,1<<PD3,1<<PD2,1<<PD1};
+	char lampjes2[10] = {1<<PD7,1<<PD6,1<<PD5,1<<PD4,1<<PD3,1<<PD2,1<<PD3,1<<PD4,1<<PD5,1<<PD6};
+	char lampjes3[10] = {1<<PC0,1<<PC1,1<<PC2,1<<PC3,1<<PC4,1<<PC5,1<<PC4,1<<PC3,1<<PC2,1<<PC1};
 	while(1){
-		PORTD |= (1<<PD0);
-		wait(1000);
-		PORTD &= ~(1<<PD0);
-		PORTD |= (1<<PD1);
-		wait(1000);
-		PORTD &= ~(1<<PD1);
-		PORTD |= (1<<PD2);
-		wait(1000);
-		PORTD &= ~(1<<PD2);
-		PORTD |= (1<<PD3);
-		wait(1000);
-		PORTD &= ~(1<<PD3);
-		PORTD |= (1<<PD4);
-		wait(1000);
-		PORTD &= ~(1<<PD4);
-		PORTD |= (1<<PD5);
-		wait(1000);
-		PORTD &= ~(1<<PD5);
-		PORTD |= (1<<PD6);
-		wait(1000);
-		PORTD &= ~(1<<PD6);
-		PORTD |= (1<<PD7);
-		wait(1000);
-		PORTD &= ~(1<<PD7);
+		int i;
+		for(i = 0; i < 10;i++){
+			PORTD |= lampjes[i];
+			PORTD |= lampjes2[i];
+			PORTC |= lampjes3[i];
+			wait(1000);
+			PORTD &= ~lampjes[i];
+			PORTD &= ~lampjes2[i];
+			PORTC &= ~lampjes3[i];
+		}
 	}
 	
 }
