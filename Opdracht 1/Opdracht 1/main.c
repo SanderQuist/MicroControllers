@@ -8,6 +8,8 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
+int state;
+
 void wait( int ms )
 {
 	for (int i=0; i<ms; i++)
@@ -19,19 +21,29 @@ void wait( int ms )
 int main( void )
 {
 	DDRD = 0b11111111;
-	char lampjes[10] = {1<<PD0,1<<PD1,1<<PD2,1<<PD3,1<<PD4,1<<PD5,1<<PD4,1<<PD3,1<<PD2,1<<PD1};
-	char lampjes2[10] = {1<<PD7,1<<PD6,1<<PD5,1<<PD4,1<<PD3,1<<PD2,1<<PD3,1<<PD4,1<<PD5,1<<PD6};
-	char lampjes3[10] = {1<<PC0,1<<PC1,1<<PC2,1<<PC3,1<<PC4,1<<PC5,1<<PC4,1<<PC3,1<<PC2,1<<PC1};
+	state = 1;
 	while(1){
-		int i;
-		for(i = 0; i < 10;i++){
-			PORTD |= lampjes[i];
-			PORTD |= lampjes2[i];
-			PORTC |= lampjes3[i];
-			wait(1000);
-			PORTD &= ~lampjes[i];
-			PORTD &= ~lampjes2[i];
-			PORTC &= ~lampjes3[i];
+		
+		if(PINC & (1<<PC0) == 1 && state == 1){
+			state = 2;
+		}
+		else if (PINC & (1<<PC0) ==1 && state == 2){
+			state = 1;
+		
+		}
+		 if(state == 1){
+				 PORTD |= (1<<PD7);
+				 wait(1000);
+				 PORTD &= ~(1<<PD7);
+				 wait(1000);
+				 
+		
+		}else if(state == 2){
+		
+			PORTD |= (1<<PD7);
+			wait(4000);
+			PORTD &= ~(1<<PD7);
+			wait(4000);
 		}
 	}
 	
