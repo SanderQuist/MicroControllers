@@ -1,0 +1,272 @@
+
+opdracht1.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  0000018a  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000136  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  0000018a  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000001bc  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000030  00000000  00000000  000001f8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000931  00000000  00000000  00000228  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 0000083b  00000000  00000000  00000b59  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000383  00000000  00000000  00001394  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000054  00000000  00000000  00001718  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    0000044a  00000000  00000000  0000176c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000164  00000000  00000000  00001bb6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000020  00000000  00000000  00001d1a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	45 c0       	rjmp	.+138    	; 0x8c <__ctors_end>
+   2:	00 00       	nop
+   4:	4b c0       	rjmp	.+150    	; 0x9c <__bad_interrupt>
+   6:	00 00       	nop
+   8:	49 c0       	rjmp	.+146    	; 0x9c <__bad_interrupt>
+   a:	00 00       	nop
+   c:	47 c0       	rjmp	.+142    	; 0x9c <__bad_interrupt>
+   e:	00 00       	nop
+  10:	45 c0       	rjmp	.+138    	; 0x9c <__bad_interrupt>
+  12:	00 00       	nop
+  14:	43 c0       	rjmp	.+134    	; 0x9c <__bad_interrupt>
+  16:	00 00       	nop
+  18:	41 c0       	rjmp	.+130    	; 0x9c <__bad_interrupt>
+  1a:	00 00       	nop
+  1c:	3f c0       	rjmp	.+126    	; 0x9c <__bad_interrupt>
+  1e:	00 00       	nop
+  20:	3d c0       	rjmp	.+122    	; 0x9c <__bad_interrupt>
+  22:	00 00       	nop
+  24:	3b c0       	rjmp	.+118    	; 0x9c <__bad_interrupt>
+  26:	00 00       	nop
+  28:	39 c0       	rjmp	.+114    	; 0x9c <__bad_interrupt>
+  2a:	00 00       	nop
+  2c:	37 c0       	rjmp	.+110    	; 0x9c <__bad_interrupt>
+  2e:	00 00       	nop
+  30:	35 c0       	rjmp	.+106    	; 0x9c <__bad_interrupt>
+  32:	00 00       	nop
+  34:	33 c0       	rjmp	.+102    	; 0x9c <__bad_interrupt>
+  36:	00 00       	nop
+  38:	31 c0       	rjmp	.+98     	; 0x9c <__bad_interrupt>
+  3a:	00 00       	nop
+  3c:	2f c0       	rjmp	.+94     	; 0x9c <__bad_interrupt>
+  3e:	00 00       	nop
+  40:	2d c0       	rjmp	.+90     	; 0x9c <__bad_interrupt>
+  42:	00 00       	nop
+  44:	2b c0       	rjmp	.+86     	; 0x9c <__bad_interrupt>
+  46:	00 00       	nop
+  48:	29 c0       	rjmp	.+82     	; 0x9c <__bad_interrupt>
+  4a:	00 00       	nop
+  4c:	27 c0       	rjmp	.+78     	; 0x9c <__bad_interrupt>
+  4e:	00 00       	nop
+  50:	25 c0       	rjmp	.+74     	; 0x9c <__bad_interrupt>
+  52:	00 00       	nop
+  54:	23 c0       	rjmp	.+70     	; 0x9c <__bad_interrupt>
+  56:	00 00       	nop
+  58:	21 c0       	rjmp	.+66     	; 0x9c <__bad_interrupt>
+  5a:	00 00       	nop
+  5c:	1f c0       	rjmp	.+62     	; 0x9c <__bad_interrupt>
+  5e:	00 00       	nop
+  60:	1d c0       	rjmp	.+58     	; 0x9c <__bad_interrupt>
+  62:	00 00       	nop
+  64:	1b c0       	rjmp	.+54     	; 0x9c <__bad_interrupt>
+  66:	00 00       	nop
+  68:	19 c0       	rjmp	.+50     	; 0x9c <__bad_interrupt>
+  6a:	00 00       	nop
+  6c:	17 c0       	rjmp	.+46     	; 0x9c <__bad_interrupt>
+  6e:	00 00       	nop
+  70:	15 c0       	rjmp	.+42     	; 0x9c <__bad_interrupt>
+  72:	00 00       	nop
+  74:	13 c0       	rjmp	.+38     	; 0x9c <__bad_interrupt>
+  76:	00 00       	nop
+  78:	11 c0       	rjmp	.+34     	; 0x9c <__bad_interrupt>
+  7a:	00 00       	nop
+  7c:	0f c0       	rjmp	.+30     	; 0x9c <__bad_interrupt>
+  7e:	00 00       	nop
+  80:	0d c0       	rjmp	.+26     	; 0x9c <__bad_interrupt>
+  82:	00 00       	nop
+  84:	0b c0       	rjmp	.+22     	; 0x9c <__bad_interrupt>
+  86:	00 00       	nop
+  88:	09 c0       	rjmp	.+18     	; 0x9c <__bad_interrupt>
+	...
+
+0000008c <__ctors_end>:
+  8c:	11 24       	eor	r1, r1
+  8e:	1f be       	out	0x3f, r1	; 63
+  90:	cf ef       	ldi	r28, 0xFF	; 255
+  92:	d0 e1       	ldi	r29, 0x10	; 16
+  94:	de bf       	out	0x3e, r29	; 62
+  96:	cd bf       	out	0x3d, r28	; 61
+  98:	36 d0       	rcall	.+108    	; 0x106 <main>
+  9a:	4b c0       	rjmp	.+150    	; 0x132 <_exit>
+
+0000009c <__bad_interrupt>:
+  9c:	b1 cf       	rjmp	.-158    	; 0x0 <__vectors>
+
+0000009e <SetLed>:
+
+// Switch the state of a LED, from on to off, or from off to on
+void SetLed( char nLed )
+{
+	// Clear existing status, we can only drive on led at a time
+	PORTB &= 0xF8;	// set the lower 3 bits to 0, ie off
+  9e:	98 b3       	in	r25, 0x18	; 24
+  a0:	98 7f       	andi	r25, 0xF8	; 248
+  a2:	98 bb       	out	0x18, r25	; 24
+	DDRB  |= 0x07;	// set the lower 3 bits to 1, ie output
+  a4:	97 b3       	in	r25, 0x17	; 23
+  a6:	97 60       	ori	r25, 0x07	; 7
+  a8:	97 bb       	out	0x17, r25	; 23
+
+	switch ( nLed )
+  aa:	82 30       	cpi	r24, 0x02	; 2
+  ac:	b1 f0       	breq	.+44     	; 0xda <SetLed+0x3c>
+  ae:	28 f4       	brcc	.+10     	; 0xba <SetLed+0x1c>
+  b0:	88 23       	and	r24, r24
+  b2:	49 f0       	breq	.+18     	; 0xc6 <SetLed+0x28>
+  b4:	81 30       	cpi	r24, 0x01	; 1
+  b6:	59 f0       	breq	.+22     	; 0xce <SetLed+0x30>
+  b8:	08 95       	ret
+  ba:	84 30       	cpi	r24, 0x04	; 4
+  bc:	d1 f0       	breq	.+52     	; 0xf2 <SetLed+0x54>
+  be:	98 f0       	brcs	.+38     	; 0xe6 <SetLed+0x48>
+  c0:	85 30       	cpi	r24, 0x05	; 5
+  c2:	d9 f0       	breq	.+54     	; 0xfa <SetLed+0x5c>
+  c4:	08 95       	ret
+	{
+		case 0:
+		DDRB  &= 0xFB;  // Disconnect the nr. 2 pin
+  c6:	ba 98       	cbi	0x17, 2	; 23
+		PORTB |= 0x01;  // Set pin 0 to high and pin 1 to low
+  c8:	c0 9a       	sbi	0x18, 0	; 24
+		PORTB |= 0x08;
+  ca:	c3 9a       	sbi	0x18, 3	; 24
+		break;
+  cc:	08 95       	ret
+		
+		case 1:
+		DDRB  &= 0xFB;  // Disconnect the nr. 2 pin
+  ce:	ba 98       	cbi	0x17, 2	; 23
+		PORTB |= 0x02;  // Set pin 1 to high and pin 0 to low
+  d0:	c1 9a       	sbi	0x18, 1	; 24
+		PORTB |= 0x16;
+  d2:	88 b3       	in	r24, 0x18	; 24
+  d4:	86 61       	ori	r24, 0x16	; 22
+  d6:	88 bb       	out	0x18, r24	; 24
+		break;
+  d8:	08 95       	ret
+		
+		case 2:
+		DDRB  &= 0xFE;  // Disconnect the nr. 0 pin
+  da:	b8 98       	cbi	0x17, 0	; 23
+		PORTB |= 0x02;  // Set pin 1 to high and pin 2 to low
+  dc:	c1 9a       	sbi	0x18, 1	; 24
+		PORTB |= 0x16;
+  de:	88 b3       	in	r24, 0x18	; 24
+  e0:	86 61       	ori	r24, 0x16	; 22
+  e2:	88 bb       	out	0x18, r24	; 24
+		break;
+  e4:	08 95       	ret
+
+		case 3:
+		DDRB  &= 0xFE;  // Disconnect the nr. 0 pin
+  e6:	b8 98       	cbi	0x17, 0	; 23
+		PORTB |= 0x04;  // Set pin 2 to high and pin 1 to low
+  e8:	c2 9a       	sbi	0x18, 2	; 24
+		PORTB |= 0x32;
+  ea:	88 b3       	in	r24, 0x18	; 24
+  ec:	82 63       	ori	r24, 0x32	; 50
+  ee:	88 bb       	out	0x18, r24	; 24
+		break;
+  f0:	08 95       	ret
+		
+		case 4:
+		DDRB  &= 0xFD;  // Disconnect the nr. 1 pin
+  f2:	b9 98       	cbi	0x17, 1	; 23
+		PORTB |= 0x01;  // Set pin 0 to high and pin 2 to low
+  f4:	c0 9a       	sbi	0x18, 0	; 24
+		PORTB |= 0x08;
+  f6:	c3 9a       	sbi	0x18, 3	; 24
+		break;
+  f8:	08 95       	ret
+		
+		case 5:
+		DDRB  &= 0xFD;  // Disconnect the nr. 1 pin
+  fa:	b9 98       	cbi	0x17, 1	; 23
+		PORTB |= 0x04;  // Set pin 2 to high and pin 0 to low
+  fc:	c2 9a       	sbi	0x18, 2	; 24
+		PORTB |= 0x32;
+  fe:	88 b3       	in	r24, 0x18	; 24
+ 100:	82 63       	ori	r24, 0x32	; 50
+ 102:	88 bb       	out	0x18, r24	; 24
+ 104:	08 95       	ret
+
+00000106 <main>:
+void SetPowerGauge( int nPower );
+
+// Define the main function
+void main()
+{
+	PORTB &= 0xF8;	// set the lower 3 bits to 0, ie off
+ 106:	88 b3       	in	r24, 0x18	; 24
+ 108:	88 7f       	andi	r24, 0xF8	; 248
+ 10a:	88 bb       	out	0x18, r24	; 24
+	DDRB  |= 0x07;	// set the lower 3 bits to 1, ie output
+ 10c:	87 b3       	in	r24, 0x17	; 23
+ 10e:	87 60       	ori	r24, 0x07	; 7
+ 110:	87 bb       	out	0x17, r24	; 23
+	
+	// Start endless loop
+	while( 1 )
+	{
+		// Start a for loop, counting from 0 to 5
+		for ( char i = 0; i < 6; i++ )
+ 112:	c0 e0       	ldi	r28, 0x00	; 0
+		{
+			// Turn on Led i
+			SetLed( i );
+ 114:	8c 2f       	mov	r24, r28
+ 116:	c3 df       	rcall	.-122    	; 0x9e <SetLed>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 118:	2f e3       	ldi	r18, 0x3F	; 63
+ 11a:	8d e0       	ldi	r24, 0x0D	; 13
+ 11c:	93 e0       	ldi	r25, 0x03	; 3
+ 11e:	21 50       	subi	r18, 0x01	; 1
+ 120:	80 40       	sbci	r24, 0x00	; 0
+ 122:	90 40       	sbci	r25, 0x00	; 0
+ 124:	e1 f7       	brne	.-8      	; 0x11e <main+0x18>
+ 126:	00 c0       	rjmp	.+0      	; 0x128 <main+0x22>
+ 128:	00 00       	nop
+	
+	// Start endless loop
+	while( 1 )
+	{
+		// Start a for loop, counting from 0 to 5
+		for ( char i = 0; i < 6; i++ )
+ 12a:	cf 5f       	subi	r28, 0xFF	; 255
+ 12c:	c6 30       	cpi	r28, 0x06	; 6
+ 12e:	91 f7       	brne	.-28     	; 0x114 <main+0xe>
+ 130:	f0 cf       	rjmp	.-32     	; 0x112 <main+0xc>
+
+00000132 <_exit>:
+ 132:	f8 94       	cli
+
+00000134 <__stop_program>:
+ 134:	ff cf       	rjmp	.-2      	; 0x134 <__stop_program>
