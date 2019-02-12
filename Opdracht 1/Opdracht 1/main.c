@@ -36,7 +36,9 @@ const unsigned char nums[16] = {
 	0b01111101, // 6
 	0b00000111, // 7
 	0b01111111, // 8
-	0b01101111, // 9	0b01110111, // A	0b01111100, // B
+	0b01101111, // 9	
+	0b01110111, // A	
+	0b01111100, // B
 	0b00111001, // C
 	0b01011110, // D
 	0b01111001, // E
@@ -129,6 +131,14 @@ Version :    	DMK, Initial code
 	
 	while (1)
 	{
+		// Call display method for B3
+		//for (int i = 0; i < 15; i++)
+		//{
+			//display(i);
+			//wait(1500);
+		//}
+		
+		// Call patroontje for B4
 		patroontje();
 	}
 
